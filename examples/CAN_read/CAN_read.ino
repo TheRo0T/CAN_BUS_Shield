@@ -2,12 +2,12 @@
 #include <mcp_can.h>
 
 struct can_frame canMsg;
-MCP_CAN mcp2551(10, MCP_CAN::MODE_NORMAL);
+MCP_CAN mcp2515(10, MCP_CAN::MODE_NORMAL);
 
 
 void setup() {
   Serial.begin(115200);
-  mcp2551.begin(CAN_125KBPS);
+  mcp2515.begin(CAN_125KBPS);
   Serial.println("------- CAN Read ----------");
   Serial.println("ID  DLC   DATA");
   
@@ -15,7 +15,7 @@ void setup() {
 
 void loop() {
   
-  if (mcp2551.readMessage(&canMsg) == MCP_CAN::ERROR_OK) {
+  if (mcp2515.readMessage(&canMsg) == MCP_CAN::ERROR_OK) {
         
     Serial.print(canMsg.can_id); // print ID
 
